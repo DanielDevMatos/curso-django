@@ -36,6 +36,6 @@ jobs:
         pipenv run pytest
     - name: Relatório Coverage
       env:
-        CODECOV_TOKEN: ${{ secrets.DJANGOCODECOV }}
+        CODECOV_TOKEN: ${{ DJANGOCODECOV }}
       run: |
         codecov
