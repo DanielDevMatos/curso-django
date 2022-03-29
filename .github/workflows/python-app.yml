@@ -36,6 +36,6 @@ jobs:
         pipenv run pytest
     - name: Relatório Coverage
       env:
-        CODECOV_TOKEN: ${{ DJANGOCODECOV }}
+        CODECOV_TOKEN: '1f00839a-6d5e-469b-9500-d61fd90b5919'
       run: |
         codecov
