@@ -23,7 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -q pipenv flake8 codecov pytest
+        pip install -q pipenv flake8 codecov
         pipenv sync --dev
     - name: Lint with flake8
       run: |
