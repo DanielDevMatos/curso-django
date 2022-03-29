@@ -33,9 +33,9 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pipenv run pytest
+        pipenv run pytest --cov=curso-django
     - name: Relatório Coverage
       env:
-        CODECOV_TOKEN: '1f00839a-6d5e-469b-9500-d61fd90b5919'
+        CODECOV_TOKEN: 'k232k4nk22'
       run: |
         codecov
