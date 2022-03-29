@@ -23,7 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -q pipenv flake8 codecov
+        pip install -q pipenv flake8 codecov pytest
         pipenv sync --dev
     - name: Lint with flake8
       run: |
@@ -33,9 +33,9 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pipenv run pytest --curso-django
+        pipenv run pytest
     - name: Relatório Coverage
       env:
-        CODECOV_TOKEN: DJANGOCODECOV
+        CODECOV_TOKEN: 'k232k4nk22'
       run: |
         codecov
