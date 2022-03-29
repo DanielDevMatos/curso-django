@@ -36,6 +36,6 @@ jobs:
         pipenv run pytest --cov=curso-django
     - name: Relatório Coverage
       env:
-        CODECOV_TOKEN: 'k232k4nk22'
+        CODECOV_TOKEN: 'DJANGOCODECOV'
       run: |
         codecov
