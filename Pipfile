@@ -7,13 +7,13 @@ name = "pypi"
 django = "*"
 gunicorn = "*"
 requests = "*"
-pytest-django = "*"
 
 [dev-packages]
 coverage = "*"
 codecov = "*"
 pytest-cov = "*"
 flake8 = "*"
+pytest-django = "*"
 
 [requires]
 python_version = "3.10"
