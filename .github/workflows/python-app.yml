@@ -11,8 +11,20 @@ on:
 
 jobs:
   build:
+    env:
+      PIPENV_VENV_IN_PROJECT: 1
+      PIPENV_NO_INHERIT: 1
+      PIPENV_IGNORE_VIRTUALENVS: 1
 
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgresql:14.2
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports: [ '5432:5432' ]
 
     steps:
     - uses: actions/checkout@v3
@@ -23,7 +35,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -q pipenv flake8 codecov
+        pip install -q 
         pipenv sync --dev
         cp contrib/env-sample .env
     - name: Lint with flake8

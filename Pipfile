@@ -7,8 +7,7 @@ name = "pypi"
 django = "*"
 gunicorn = "*"
 requests = "*"
-python-decouple = "*"
-dj-database-url = "*"
+
 
 [dev-packages]
 coverage = "*"
@@ -16,6 +15,9 @@ codecov = "*"
 pytest-cov = "*"
 flake8 = "*"
 pytest-django = "*"
+psycopg2-binary = "*"
+python-decouple = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.10"
