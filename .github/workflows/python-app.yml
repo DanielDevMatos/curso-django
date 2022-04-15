@@ -12,7 +12,21 @@ on:
 jobs:
   build:
 
+    env:
+      PIPENV_VENV_IN_PROJECT: 1
+      PIPENV_NO_INHERIT: 1
+      PIPENV_IGNORE_VIRTUALENVS: 1
+
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:14.2
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports: ['5432:5432']
 
     steps:
     - uses: actions/checkout@v3
@@ -26,15 +40,13 @@ jobs:
         pip install -q pipenv flake8 codecov
         pipenv sync --dev
         cp contrib/env-sample .env
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: rodar flake8
+      uses: py-actions/flake8@v1
+      with:
+        checkName: 'flake8_py3'
     - name: Test with pytest
       run: |
         pipenv run pytest --cov=curso-django
     - name: Relatório Coverage
       run: |
-        codecov
+        pipenv run codecov
