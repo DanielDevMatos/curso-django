@@ -1,0 +1,27 @@
+{% extends 'base/base.html'%}
+{% load static %}
+{% block title %}Python-pro Aperitivos{% endblock title %}
+
+{% block description %}Pagina comtodos videos gratuitos{% endblock description %}
+
+{% block body %}
+<div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h1 class="mt-4 mb-3">Lista de Videos Aperitivos</h1>
+                <ol>
+                    {% for video in videos%}
+                    <li>
+                        <a href="{{ video.get_absolute_url }}">{{ video.titulo | default:"Faltando Titulo" }}</a>
+                    </li>
+                    {% empty %}
+                    <li>Não foi encontrao nenhum Video de Aperitivos</li>
+                    {% endfor %}
+                </ol>
+
+                </div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+        </div>
+    </div>
+{% endblock body %}
